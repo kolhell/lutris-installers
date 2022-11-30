@@ -1,0 +1,19 @@
+game:
+  exe: Path of Building.exe
+game_slug: path-of-building
+name: Path of Building
+requires: null
+runner: wine
+script:
+  game:
+    exe: Path of Building.exe
+    prefix: $GAMEDIR
+  installer:
+  - execute:
+      command: '`curl -s https://api.github.com/repos/pathofbuildingcommunity/pathofbuilding/releases/latest | grep "browser_download_url.*zip" | cut -d : -f 2,3 | tr -d \" | wget --no-check-certificate -i - -O pob-latest.zip`'
+  - extract:
+      file: $GAMEDIR/pob-latest.zip
+slug: path-of-building-pathofbuildingcommunity-latest
+variables: {}
+version: PathOfBuildingCommunity-latest
+year: 2016
